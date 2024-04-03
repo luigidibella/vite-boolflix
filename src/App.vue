@@ -20,7 +20,18 @@ export default {
 
   methods:{
     getApi(){
-      console.log('GET API');
+      /* console.log('GET API'); */
+      axios.get(this.store.apiUrl, {
+        params:this.store.queryParams
+      })
+      .then(result => {
+        this.store.cardList = result.data.results;
+        console.log(result.data.results);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+
     }
     
   },
