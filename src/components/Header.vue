@@ -6,9 +6,15 @@ export default {
 
 <template>
   <header>
-    <div class="container text-center">
-      <h1>header</h1>
-    </div>
+    <nav class="navbar bg-black">
+      <div class="container-fluid">
+        <a class="navbar-brand text-danger">BOOLFLIX</a>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+        </form>
+      </div>
+    </nav>
   </header>
 </template>
 

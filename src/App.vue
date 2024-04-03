@@ -41,10 +41,10 @@ export default {
 
   <Main />
 
-  <Footer />
+  <!-- <Footer /> -->
 
 </template>
 
-<style scoped>
-
+<style lang="scss">
+@import './assets/scss/main';
 </style>

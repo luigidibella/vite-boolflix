@@ -7,7 +7,7 @@ export default {
 <template>
   <main>
     <div class="container text-center">
-      <h1>main</h1>
+      <h1 class="text-white">main</h1>
     </div>
   </main>
 </template>
