@@ -25,7 +25,7 @@ export default {
 </script>
 
 <template>
-  <div class="container text-center">
+  <div class="container text-center text-white">
     <h1 class="">{{ title }}</h1>
     <div class="row row-cols-4 ">
       <MyCard
@@ -38,5 +38,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-
+.container{
+  background-color: #434343;;
+}
 </style>
