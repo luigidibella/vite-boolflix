@@ -18,6 +18,7 @@ export default {
           <input 
             v-model.trim="store.queryParams.query"
             class="form-control me-2" 
+            id="form-control"
             type="search" 
             placeholder="Cerca un film" 
             aria-label="Search"
