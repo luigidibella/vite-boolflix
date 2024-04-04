@@ -2,13 +2,13 @@
 import axios from 'axios';
 import { store } from './data/store';
 import Header from './components/Header.vue';
-import Main from './components/Main.vue';
+import CardsContainer from './components/CardsContainer.vue';
 import Footer from './components/Footer.vue';
 
 export default {
   components:{
     Header,
-    Main,
+    CardsContainer,
     Footer
   },
 
@@ -19,43 +19,42 @@ export default {
   },
 
   methods:{
-    getApi(){
-      /* console.log('GET API'); */
-      axios.get(this.store.apiUrl, {
-        params:this.store.queryParams
+    getApi(type){
+      /* console.log(store.apiUrl + type); */
+      axios.get(store.apiUrl + type,{
+        params: store.queryParams
       })
-      .then(result => {
-        this.store.cardList = result.data.results;
-        console.log(result.data.results);
+      .then( res => {
+        /* console.log(res.data); */
+        store[type] = res.data.results;
+        /* console.log(store[type]); */
       })
-      .catch(error => {
-        console.log(error);
-      })
+    },
 
+    startSearch(){
+      this.getApi('movie')
+      this.getApi('tv')
     }
-    
   },
 
   mounted(){
-    this.getApi()
+    this.startSearch()
   }
-
 }
-
 </script>
-
-
 
 <template>
 
-  <Header />
+  <Header @startSearch="startSearch" />
 
-  <Main />
+  <CardsContainer type="movie" v-if="store.movie.length > 0" />
+
+  <CardsContainer type="tv" v-if="store.tv.length > 0" />
 
   <!-- <Footer /> -->
 
 </template>
 
 <style lang="scss">
-@import './assets/scss/main';
+@use './assets/scss/main.scss' as *;
 </style>

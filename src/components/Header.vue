@@ -1,6 +1,11 @@
 <script>
+import { store } from '../data/store'
 export default {
-  
+  data(){
+    return{
+      store
+    }
+  }
 }
 </script>
 
@@ -10,8 +15,14 @@ export default {
       <div class="container-fluid">
         <a class="navbar-brand text-danger">BOOLFLIX</a>
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
+          <input 
+            v-model.trim="store.queryParams.query"
+            class="form-control me-2" 
+            type="search" 
+            placeholder="Cerca un film" 
+            aria-label="Search"
+          >
+          <button @click.prevent="$emit('startSearch')" class="btn btn-outline-success" type="submit">Cerca</button>
         </form>
       </div>
     </nav>
