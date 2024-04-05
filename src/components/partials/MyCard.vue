@@ -10,7 +10,18 @@ export default {
     return {
       store,
     }
-  }
+  },
+
+  methods: {
+    fullStars(vote) { 
+      return Math.floor(vote / 2);
+    },
+
+    emptyStars(vote){
+      return Math.ceil(5 - (vote / 2));
+    }
+
+  },
 }
 </script>
 
@@ -49,7 +60,9 @@ export default {
         >
           {{ cardObj.original_language }}
         </p>
-        <p class="card-text">{{ cardObj.vote_average }}</p>
+        <!-- <p class="card-text">{{ cardObj.vote_average }}</p> -->
+        <i v-for="star in fullStars(cardObj.vote_average)" :key="star" class="fa-solid fa-star text-white"></i>
+        <i v-for="star in emptyStars(cardObj.vote_average)" :key="star" class="fa-regular fa-star"></i>
       </div>
     </div>
   </div>
@@ -59,6 +72,7 @@ export default {
 img{
   max-width: 100%;
   max-height: 100%;
+  border: 1px solid white;
 }
 
 span{
@@ -74,7 +88,8 @@ p{
 }
 
 .flip-card {
-  background-color: transparent;
+  /* background-color: transparent; */
+  background-color: none;
   height: 200px;
   /* border: 1px solid #f1f1f1; */
   perspective: 1000px;
