@@ -26,8 +26,8 @@ export default {
 
 <template>
   <div class="container text-center text-white">
-    <h1 class="">{{ title }}</h1>
-    <div class="row row-cols-4 ">
+    <h1 class="text-danger text-uppercase">{{ title }}</h1>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
       <MyCard
         v-for="card in store[type]"
         :key="card.id"
@@ -39,6 +39,9 @@ export default {
 
 <style lang="scss" scoped>
 .container{
-  background-color: #434343;;
+  background-color: #434343;
+  &:first-of-type{
+    padding-top: 100px;
+  }
 }
 </style>

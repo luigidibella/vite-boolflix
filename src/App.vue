@@ -56,5 +56,11 @@ export default {
 </template>
 
 <style lang="scss">
-@use './assets/scss/main.scss' as *;
+
+@use './assets/scss/main.scss';
+
+body{
+  background-color:  #434343 !important;
+}
+
 </style>

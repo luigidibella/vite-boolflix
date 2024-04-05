@@ -32,16 +32,16 @@ export default {
         <div
           v-if="cardObj.poster_path === null"
           class="d-flex justify-content-center align-items-center h-100"
-        ><span>image not found</span></div>
+        ><span class="img_not_found">image not found</span></div>
         <img
           v-else
          :src="`http://image.tmdb.org/t/p/w500/${ cardObj.poster_path }`" 
          alt=""
         >
       </div>
-      <div class="card-body flip-back">
-        <h5 class="card-title">{{ cardObj.title || cardObj.name}}</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">{{ cardObj.original_title || cardObj.original_name}}</h6>
+      <div class="card-body flip-back text-start overflow-y-scroll">
+        <h5 class="card-title">Titolo: {{ cardObj.title || cardObj.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Titolo originale: {{ cardObj.original_title || cardObj.original_name}}</h6>
         <p
           v-if="cardObj.original_language === 'en'"
           class="card-text mb-2"
@@ -58,11 +58,14 @@ export default {
           v-else-if="cardObj.original_language !== 'en' && 'it'"
           class="card-text mb-2"
         >
+          <span>Lingua: </span>
           {{ cardObj.original_language }}
         </p>
         <!-- <p class="card-text">{{ cardObj.vote_average }}</p> -->
+        <span>Voto: </span>
         <i v-for="star in fullStars(cardObj.vote_average)" :key="star" class="fa-solid fa-star text-white"></i>
         <i v-for="star in emptyStars(cardObj.vote_average)" :key="star" class="fa-regular fa-star"></i>
+        <p>Overview: {{ cardObj.overview }}</p>
       </div>
     </div>
   </div>
@@ -75,9 +78,10 @@ img{
   border: 1px solid white;
 }
 
-span{
-  border: 1px dashed black;
+.img_not_found{
+  border: 1px dashed white;
   padding: 5px;
+  color: white;
 }
 
 p{
@@ -103,6 +107,7 @@ p{
   transition: transform 0.8s;
   transform-style: preserve-3d;
   border: none;
+  background-color: rgb(255, 255, 255, 0.3);
 }
 
 .flip-card:hover .flip-inner {
@@ -126,6 +131,21 @@ p{
   background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);
+}
+
+.flip-back::-webkit-scrollbar {
+width: 12px;
+}
+
+.flip-back::-webkit-scrollbar-track {
+background-color: #ccc;
+box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+/* border-radius: 10px; */
+}
+
+.flip-back::-webkit-scrollbar-thumb {
+background-color: #0066ce;
+/* border-radius: 10px; */
 }
 
 </style>

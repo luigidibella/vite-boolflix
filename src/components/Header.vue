@@ -12,7 +12,7 @@ export default {
 <template>
   <header>
     <nav class="navbar bg-black">
-      <div class="container-fluid">
+      <div class="container-fluid flex-column flex-md-row">
         <a class="navbar-brand text-danger">BOOLFLIX</a>
         <form class="d-flex" role="search">
           <input 
@@ -31,5 +31,12 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+header{
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
 
 </style>
