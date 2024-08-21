@@ -12,18 +12,18 @@ export default {
 <template>
   <header>
     <nav class="navbar bg-black">
-      <div class="container-fluid flex-column flex-md-row">
-        <a class="navbar-brand text-danger">BOOLFLIX</a>
+      <div class="container-fluid flex-column flex-md-row mx-5">
+        <a class="navbar-brand text-danger fw-bold" href="javascript:location.reload()">BOOLFLIX</a>
         <form class="d-flex" role="search">
           <input 
             v-model.trim="store.queryParams.query"
             class="form-control me-2" 
             id="form-control"
             type="search" 
-            placeholder="Cerca un film" 
+            placeholder="Titoli, persone, generi" 
             aria-label="Search"
           >
-          <button @click.prevent="$emit('startSearch')" class="btn btn-outline-success" type="submit">Cerca</button>
+          <button @click.prevent="$emit('startSearch')" class="btn btn-outline-danger" type="submit">Cerca</button>
         </form>
       </div>
     </nav>
