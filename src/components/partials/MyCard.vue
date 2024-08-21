@@ -40,8 +40,8 @@ export default {
         >
       </div>
       <div class="card-body flip-back text-start overflow-y-scroll">
-        <h5 class="card-title">Titolo: {{ cardObj.title || cardObj.name}}</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary">Titolo originale: {{ cardObj.original_title || cardObj.original_name}}</h6>
+        <h5 class="card-title">{{ cardObj.title || cardObj.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{ cardObj.original_title || cardObj.original_name}}</h6>
         <p
           v-if="cardObj.original_language === 'en'"
           class="card-text mb-2"
@@ -62,10 +62,10 @@ export default {
           {{ cardObj.original_language }}
         </p>
         <!-- <p class="card-text">{{ cardObj.vote_average }}</p> -->
-        <span>Voto: </span>
-        <i v-for="star in fullStars(cardObj.vote_average)" :key="star" class="fa-solid fa-star text-white"></i>
-        <i v-for="star in emptyStars(cardObj.vote_average)" :key="star" class="fa-regular fa-star"></i>
-        <p>Overview: {{ cardObj.overview }}</p>
+        <span class=""></span>
+        <i v-for="star in fullStars(cardObj.vote_average)" :key="star" class="fa-solid fa-star" style="color: #FFD43B;"></i>
+        <i v-for="star in emptyStars(cardObj.vote_average)" :key="star" class="fa-regular fa-star" style="color: #FFD43B;"></i>
+        <p>{{ cardObj.overview }}</p>
       </div>
     </div>
   </div>
@@ -73,8 +73,8 @@ export default {
 
 <style lang="scss" scoped>
 img{
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 270px;
+  height: 100%;
   border: 1px solid white;
 }
 
@@ -94,7 +94,7 @@ p{
 .flip-card {
   /* background-color: transparent; */
   background-color: none;
-  height: 200px;
+  height: 400px;
   /* border: 1px solid #f1f1f1; */
   perspective: 1000px;
 }
@@ -131,6 +131,8 @@ p{
   background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
 }
 
 .flip-back::-webkit-scrollbar {
