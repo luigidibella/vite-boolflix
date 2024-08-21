@@ -19,6 +19,16 @@ export default {
   },
 
   methods:{
+    getPopularMovie() {
+      axios.get(store.apiUrlPopolarMovie, {
+          params: store.queryParams
+        })
+        .then( res => {
+          store.popular = res.data.results;
+          console.log(store.popular);
+        });
+    },
+
     getApi(type){
       /* console.log(store.apiUrl + type); */
       axios.get(store.apiUrl + type,{
@@ -28,7 +38,7 @@ export default {
         /* console.log(res.data); */
         store[type] = res.data.results;
         /* console.log(store[type]); */
-      })
+      });
     },
 
     startSearch(){
@@ -38,7 +48,8 @@ export default {
   },
 
   mounted(){
-    this.startSearch()
+    this.getPopularMovie();
+    this.startSearch();
   }
 }
 </script>
@@ -46,6 +57,8 @@ export default {
 <template>
 
   <Header @startSearch="startSearch" />
+  
+  <CardsContainer type ="popular" v-if="store.movie.length === 0 && store.tv.length === 0" />
 
   <CardsContainer type="movie" v-if="store.movie.length > 0" />
 
